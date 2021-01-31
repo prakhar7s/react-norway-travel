@@ -1,0 +1,244 @@
+$hamburger-color: rgb(223, 209, 209);
+$hamburger-height: 2px;
+$hamburger-width: 22px;
+
+.norway-trip {
+  background-image: url("../../assets/images/image1.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  header {
+    width: 100%;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+
+    .app__name {
+      font-family: "Pacifico", cursive;
+      font-size: 30px;
+      transform: translate(-20px, -20px);
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+
+    .navs {
+      width: 25%;
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+      }
+    }
+
+    .hamburger-menu {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(189, 186, 186, 0.5);
+      transform: translate(40px, -25px);
+      backdrop-filter: blur(20px);
+      border-radius: 0px 0px 0px 10px;
+      position: relative;
+      cursor: pointer;
+
+      span,
+      &::after,
+      &::before {
+        width: $hamburger-width;
+        height: $hamburger-height;
+        background: $hamburger-color;
+      }
+
+      span {
+        display: block;
+        transform: translate(18px, 21px);
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+      }
+
+      &::before {
+        transform: translate(18px, 28px);
+      }
+
+      &::after {
+        transform: translate(18px, 33px);
+      }
+    }
+  }
+
+  .title {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    padding: 0 35px;
+    height: 200px;
+
+    .social-media-links {
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+
+      .sm-link {
+        backdrop-filter: blur(20px);
+        width: 100%;
+        line-height: 10px;
+
+        a {
+          text-decoration: none;
+          opacity: 0.9;
+          color: rgb(255, 255, 255);
+
+          .MuiSvgIcon-root {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    .headings {
+      width: 100%;
+      span {
+        letter-spacing: 15px;
+        font-weight: 400;
+        opacity: 0.65;
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 120px;
+        font-weight: 500;
+        letter-spacing: 20px;
+        opacity: 0.8;
+      }
+    }
+
+    .image-indicator {
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.34);
+      width: 1px;
+
+      span {
+        height: 20%;
+        width: 100%;
+        background: rgb(255, 255, 255);
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    padding-left: 0px;
+
+    .see-more {
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      transform: rotate(90deg);
+      opacity: 0.8;
+      font-weight: 500;
+      opacity: 0.5;
+
+      span {
+        transform: rotate(180deg);
+      }
+
+      .MuiSvgIcon-root {
+        font-size: 30px;
+      }
+    }
+
+    .locations {
+      display: flex;
+      width: 65%;
+      justify-content: space-between;
+
+      .location {
+        width: 32%;
+        background-color: rgba(189, 186, 186, 0.2);
+        backdrop-filter: blur(2px);
+        display: flex;
+        padding: 15px 20px;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 7px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+
+        .logo {
+          fill: rgba(255, 255, 255, 0.25);
+        }
+
+        .content {
+          width: 70%;
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 4px;
+          }
+
+          p {
+            font-weight: 100;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+
+    .change-img {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .buttons {
+        display: flex;
+        width: 70px;
+        display: flex;
+        justify-content: space-between;
+        color: rgba(233, 225, 225, 0.51);
+
+        .left,
+        .right {
+          cursor: pointer;
+        }
+      }
+
+      .count {
+        width: 100%;
+        text-align: center;
+        color: rgba(233, 225, 225, 0.51);
+        font-size: 14px;
+        letter-spacing: 1px;
+
+        span {
+          color: white;
+          font-size: 25px;
+          margin: 0 3px;
+        }
+      }
+    }
+  }
+}
