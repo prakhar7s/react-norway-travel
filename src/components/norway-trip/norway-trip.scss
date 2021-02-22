@@ -3,8 +3,7 @@ $hamburger-height: 2px;
 $hamburger-width: 22px;
 
 .norway-trip {
-  background-image: url("../../assets/images/image1.jpg");
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,6 +11,27 @@ $hamburger-width: 22px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  position: fixed;
+
+  &.imageOne {
+    background-image: url("../../assets/images/image1.jpg");
+  }
+
+  &.imageTwo {
+    background-image: url("../../assets/images/image2.jpg");
+  }
+
+  &.imageThree {
+    background-image: url("../../assets/images/image3.jpg");
+  }
+
+  &.imageFour {
+    background-image: url("../../assets/images/image4.jpg");
+  }
+
+  &.imageFive {
+    background-image: url("../../assets/images/image5.jpg");
+  }
 
   header {
     width: 100%;
@@ -38,7 +58,7 @@ $hamburger-width: 22px;
       a {
         text-decoration: none;
         color: white;
-        font-size: 14px;
+        font-size: 16px;
       }
     }
 
@@ -122,19 +142,20 @@ $hamburger-width: 22px;
       }
 
       p {
-        font-size: 120px;
         font-weight: 500;
         letter-spacing: 20px;
         opacity: 0.8;
+        font-size: calc(0.75em + 18vmin);
       }
     }
-
     .image-indicator {
       height: 100%;
       background-color: rgba(255, 255, 255, 0.34);
       width: 1px;
+      position: relative;
 
       span {
+        position: absolute;
         height: 20%;
         width: 100%;
         background: rgb(255, 255, 255);
@@ -175,7 +196,7 @@ $hamburger-width: 22px;
 
       .location {
         width: 32%;
-        background-color: rgba(189, 186, 186, 0.2);
+        background-color: rgba(189, 186, 186, 0.25);
         backdrop-filter: blur(2px);
         display: flex;
         padding: 15px 20px;
@@ -184,16 +205,16 @@ $hamburger-width: 22px;
         border-radius: 7px;
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
         cursor: pointer;
+        flex-direction: row;
 
         .logo {
-          fill: rgba(255, 255, 255, 0.25);
+          fill: rgba(255, 255, 255, 0.7);
         }
 
         .content {
           width: 70%;
           display: flex;
           flex-direction: column;
-
           span {
             font-size: 17px;
             font-weight: 500;
@@ -201,7 +222,7 @@ $hamburger-width: 22px;
           }
 
           p {
-            font-weight: 100;
+            font-weight: 300;
             font-size: 15px;
           }
         }
@@ -212,17 +233,23 @@ $hamburger-width: 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      align-items: center;
+      width: 7%;
 
       .buttons {
         display: flex;
-        width: 70px;
+        width: 50px;
         display: flex;
         justify-content: space-between;
-        color: rgba(233, 225, 225, 0.51);
+        color: rgba(233, 225, 225, 1);
 
         .left,
         .right {
           cursor: pointer;
+
+          .MuiSvgIcon-root {
+            font-size: 35px;
+          }
         }
       }
 
@@ -232,12 +259,98 @@ $hamburger-width: 22px;
         color: rgba(233, 225, 225, 0.51);
         font-size: 14px;
         letter-spacing: 1px;
+        margin-left: 20px;
 
         span {
           color: white;
           font-size: 25px;
           margin: 0 3px;
         }
+      }
+    }
+  }
+
+  .hamburger-sidebar {
+    background-color: rgba(34, 32, 32, 0.6);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+
+    &.show-sidebar {
+      display: block;
+    }
+
+    .ham-menu {
+      height: 100%;
+      backdrop-filter: blur(10px);
+      background-color: rgba(126, 252, 122, 0.6);
+      width: 20%;
+      float: right;
+      padding: 20px;
+
+      .close-btn {
+        float: right;
+        cursor: pointer;
+      }
+
+      .links {
+        height: 40%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .norway-trip {
+    header {
+      .app__name {
+        font-size: 24px;
+      }
+    }
+
+    .title {
+      padding: 12px;
+      .headings {
+        margin-top: 65px;
+        p {
+          font-size: calc(0.75em + 10vmin);
+        }
+      }
+    }
+    footer {
+      padding: 0 5px;
+      width: 100%;
+
+      .locations {
+        flex-direction: column;
+        width: 100%;
+
+        .location {
+          height: 60px;
+          min-width: 100%;
+          margin: 7px 0;
+        }
+      }
+
+      .change-img {
+        width: 18%;
+        padding-right: 25px;
+        justify-content: space-evenly;
+      }
+    }
+    .hamburger-sidebar {
+      background-color: rgba(0, 0, 0, 0.6);
+      .ham-menu {
+        width: 60%;
       }
     }
   }

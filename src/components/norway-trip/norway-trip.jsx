@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Location } from "../../assets/icons/location.svg";
@@ -17,12 +17,39 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import TelegramIcon from "@material-ui/icons/Telegram";
 
+import CloseIcon from "@material-ui/icons/Close";
+
 const NorwayTrip = () => {
-  const [totalImages, setTotalImages] = useState(5);
-  const [currentImage, setCurrentImage] = useState(1);
+  const [totalImages, setTotalImages] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const [images, setImages] = useState([
+    " imageOne",
+    " imageTwo",
+    " imageThree",
+    " imageFour",
+    " imageFive",
+  ]);
+
+  const changeRight = () => {
+    const temp = (currentImage + 1) % images.length;
+    setCurrentImage(temp);
+  };
+
+  const changeLeft = () => {
+    let temp = currentImage - 1;
+    if (temp == -1) {
+      temp = images.length - 1;
+    }
+    setCurrentImage(temp);
+  };
+  useEffect(() => {
+    setTotalImages(images.length);
+  }, []);
 
   return (
-    <div className="norway-trip">
+    <div className={`norway-trip${images[currentImage]}`}>
       <header>
         <div className="app__name">
           <Link>Nortravel</Link>
@@ -32,7 +59,7 @@ const NorwayTrip = () => {
           <Link to="#">Activites</Link>
           <Link to="#">About Us</Link>
         </div>
-        <div className="hamburger-menu">
+        <div onClick={() => setShowSidebar(true)} className="hamburger-menu">
           <span></span>
         </div>
       </header>
@@ -69,7 +96,9 @@ const NorwayTrip = () => {
           <p>Norway</p>
         </div>
         <div className="image-indicator">
-          <span></span>
+          <span
+            style={{ top: `${currentImage * (100 / images.length)}%` }}
+          ></span>
         </div>
       </div>
 
@@ -110,19 +139,33 @@ const NorwayTrip = () => {
         </div>
         <div className="change-img">
           <div className="buttons">
-            <div className="left">
+            <div onClick={() => changeLeft()} className="left">
               <ChevronLeftOutlinedIcon />
             </div>
-            <div className="right">
+            <div onClick={() => changeRight()} className="right">
               <ChevronRightOutlinedIcon />
             </div>
           </div>
           <div className="count">
-            <span>0{currentImage}</span>
+            <span>0{currentImage + 1}</span>
             /0{totalImages}
           </div>
         </div>
       </footer>
+
+      <div className={`hamburger-sidebar${showSidebar ? " show-sidebar" : ""}`}>
+        <div className="ham-menu">
+          <div onClick={() => setShowSidebar(false)} className="close-btn">
+            <CloseIcon />
+          </div>
+          <div className="links">
+            <Link>Amazon</Link>
+            <Link>Goldman</Link>
+            <Link>Google</Link>
+            <Link>Facebook</Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
