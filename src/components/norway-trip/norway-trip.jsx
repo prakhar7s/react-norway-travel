@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Location } from "../../assets/icons/location.svg";
@@ -24,12 +24,25 @@ const NorwayTrip = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [showSidebar, setShowSidebar] = useState(false);
 
+  const bgImg = useRef();
+
   const [images, setImages] = useState([
-    " imageOne",
-    " imageTwo",
-    " imageThree",
-    " imageFour",
-    " imageFive",
+    {
+      img: "https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=20&q=60",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGFyayUyMG5hdHVyZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=20&q=60",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1606240639706-dbd343433c32?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmF0dWUlMjBiZWF1dHl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=20&q=60",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1473277087567-8e0937304e17?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZGFyayUyMG5hdHVyZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=20&q=60",
+      lazy: true,
+    },
+    {
+      img: "https://images.unsplash.com/photo-1610650138161-ef555e34fdf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=20&q=60",
+    },
   ]);
 
   const changeRight = () => {
@@ -39,25 +52,38 @@ const NorwayTrip = () => {
 
   const changeLeft = () => {
     let temp = currentImage - 1;
-    if (temp == -1) {
+    if (temp === -1) {
       temp = images.length - 1;
     }
     setCurrentImage(temp);
   };
   useEffect(() => {
     setTotalImages(images.length);
+    setImages((prev) => {
+      const temp = prev.map((img) => ({
+        img: img.img.replace("w=20&", "w=800&"),
+      }));
+
+      return temp;
+    });
   }, []);
 
   return (
-    <div className={`norway-trip${images[currentImage]}`}>
+    <div className={`norway-trip`}>
+      <img
+        className="bg-image"
+        ref={bgImg}
+        src={images[currentImage].img}
+        alt=""
+      />
       <header>
         <div className="app__name">
           <Link>Nortravel</Link>
         </div>
         <div className="navs">
-          <Link to="#">Destinations</Link>
-          <Link to="#">Activites</Link>
-          <Link to="#">About Us</Link>
+          <Link to="#destination">Destinations</Link>
+          <Link to="#activites">Activites</Link>
+          <Link to="#aboutUs">About Us</Link>
         </div>
         <div onClick={() => setShowSidebar(true)} className="hamburger-menu">
           <span></span>
@@ -160,9 +186,9 @@ const NorwayTrip = () => {
             <CloseIcon />
           </div>
           <div className="links">
-            <Link>Destinations</Link>
-            <Link>Activities</Link>
-            <Link>About Us</Link>
+            <Link to="#destination">Destinations</Link>
+            <Link to="#activities">Activities</Link>
+            <Link to="#aboutUs">About Us</Link>
           </div>
         </div>
       </div>

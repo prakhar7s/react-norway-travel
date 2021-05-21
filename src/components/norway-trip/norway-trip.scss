@@ -13,24 +13,11 @@ $hamburger-width: 22px;
   flex-direction: column;
   position: fixed;
 
-  &.imageOne {
-    background-image: url("../../assets/images/image1.jpg");
-  }
-
-  &.imageTwo {
-    background-image: url("../../assets/images/image2.jpg");
-  }
-
-  &.imageThree {
-    background-image: url("../../assets/images/image3.jpg");
-  }
-
-  &.imageFour {
-    background-image: url("../../assets/images/image4.jpg");
-  }
-
-  &.imageFive {
-    background-image: url("../../assets/images/image5.jpg");
+  .bg-image {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
   }
 
   header {
@@ -54,6 +41,7 @@ $hamburger-width: 22px;
       width: 25%;
       display: flex;
       justify-content: space-between;
+      z-index: 10;
 
       a {
         text-decoration: none;
@@ -170,6 +158,7 @@ $hamburger-width: 22px;
     justify-content: space-between;
     padding: 20px 40px;
     padding-left: 0px;
+    z-index: 4;
 
     .see-more {
       font-size: 9px;
@@ -277,6 +266,7 @@ $hamburger-width: 22px;
     position: fixed;
     background-color: rgba(34, 32, 32, 0.3);
     visibility: hidden;
+    z-index: 1000;
 
     .overlay {
       background-color: rgba(34, 32, 32, 0.5);
