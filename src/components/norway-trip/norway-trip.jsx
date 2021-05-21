@@ -154,15 +154,15 @@ const NorwayTrip = () => {
       </footer>
 
       <div className={`hamburger-sidebar${showSidebar ? " show-sidebar" : ""}`}>
+        <div className="overlay"></div>
         <div className="ham-menu">
           <div onClick={() => setShowSidebar(false)} className="close-btn">
             <CloseIcon />
           </div>
           <div className="links">
-            <Link>Amazon</Link>
-            <Link>Goldman</Link>
-            <Link>Google</Link>
-            <Link>Facebook</Link>
+            <Link>Destinations</Link>
+            <Link>Activities</Link>
+            <Link>About Us</Link>
           </div>
         </div>
       </div>

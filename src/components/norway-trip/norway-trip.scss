@@ -137,7 +137,7 @@ $hamburger-width: 22px;
       span {
         letter-spacing: 15px;
         font-weight: 400;
-        opacity: 0.65;
+        opacity: 0.85;
         font-size: 22px;
       }
 
@@ -202,8 +202,9 @@ $hamburger-width: 22px;
         padding: 15px 20px;
         justify-content: space-around;
         align-items: center;
-        border-radius: 7px;
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+        border: 1px solid #ffffff25;
         cursor: pointer;
         flex-direction: row;
 
@@ -212,7 +213,7 @@ $hamburger-width: 22px;
         }
 
         .content {
-          width: 70%;
+          width: 80%;
           display: flex;
           flex-direction: column;
           span {
@@ -271,23 +272,35 @@ $hamburger-width: 22px;
   }
 
   .hamburger-sidebar {
-    background-color: rgba(34, 32, 32, 0.6);
-    position: fixed;
     width: 100vw;
     height: 100vh;
-    display: none;
+    position: fixed;
+    background-color: rgba(34, 32, 32, 0.3);
+    visibility: hidden;
 
-    &.show-sidebar {
-      display: block;
+    .overlay {
+      background-color: rgba(34, 32, 32, 0.5);
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      position: fixed;
+      transform: translate(-1050px);
+      transition: all 0.15s cubic-bezier(0, 0, 0.2, 1);
     }
 
     .ham-menu {
       height: 100%;
-      backdrop-filter: blur(10px);
-      background-color: rgba(126, 252, 122, 0.6);
-      width: 20%;
+      backdrop-filter: blur(2px);
+      background-color: rgba(122, 226, 252, 0.2);
       float: right;
       padding: 20px;
+      border-left: 1px solid rgba(221, 221, 221, 0.3);
+      min-width: 260px;
+      width: 20%;
+      max-width: 260px;
+      transform: translate(350px);
+      transition: all 0.35s cubic-bezier(0, 0, 0.2, 1);
 
       .close-btn {
         float: right;
@@ -303,7 +316,20 @@ $hamburger-width: 22px;
         a {
           text-decoration: none;
           color: white;
+          border-bottom: 1px solid rgba(221, 221, 221, 0.2);
+          padding-bottom: 10px;
         }
+      }
+    }
+
+    &.show-sidebar {
+      visibility: visible;
+
+      .ham-menu {
+        transform: translate(0px);
+      }
+      .overlay {
+        transform: translate(0px);
       }
     }
   }
@@ -314,6 +340,11 @@ $hamburger-width: 22px;
     header {
       .app__name {
         font-size: 24px;
+        margin: 0;
+      }
+
+      .navs {
+        display: none;
       }
     }
 
@@ -343,14 +374,9 @@ $hamburger-width: 22px;
 
       .change-img {
         width: 18%;
-        padding-right: 25px;
         justify-content: space-evenly;
-      }
-    }
-    .hamburger-sidebar {
-      background-color: rgba(0, 0, 0, 0.6);
-      .ham-menu {
-        width: 60%;
+        padding: 50px 0px;
+        padding-right: 25px;
       }
     }
   }
